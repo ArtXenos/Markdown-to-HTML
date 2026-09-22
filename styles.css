@@ -2,39 +2,324 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
+:root {
+    --peach: #F7B9A6;
+    --lavender: #C9B6E4;
+    --blue: #7EA8C9;
+    --plum: #3D3352;
+    --sand: #F2E2C4;
+    --sand-light: #FBF3E1;
+    --coral: #E8927C;
+    --white: #FFFDF9;
 }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--sand-light);
+    color: var(--plum);
+}
+
+
+/* =========================
+   BEACH HERO
+========================= */
+
+.hero {
+    position: relative;
+    min-height: 280px;
+    padding: 60px 20px 80px;
+    text-align: center;
+    overflow: hidden;
+
+    background: linear-gradient(
+        180deg,
+        var(--peach) 0%,
+        var(--lavender) 50%,
+        var(--blue) 100%
+    );
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 2;
+
+    margin: 10px 0;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--plum);
+}
+
+.eyebrow {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: var(--plum);
+}
+
+.subtitle {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: var(--plum);
+}
+
+
+/* =========================
+   SUN
+========================= */
+
+.sun {
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    top: 45px;
+    right: 12%;
+
+    border-radius: 50%;
+
+    background-color: var(--sand);
+
+    opacity: 0.85;
+}
+
+
+/* =========================
+   WAVE
+========================= */
+
+.wave {
+    position: absolute;
+
+    bottom: -55px;
+    left: -5%;
+    width: 110%;
+    height: 100px;
+
+    background-color: var(--blue);
+
+    border-radius: 50% 50% 0 0;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+#container {
+    max-width: 1400px;
+    margin: -20px auto 0;
+    padding: 20px;
+
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.container {
+    margin-bottom: 25px;
+}
+
+.container h2 {
+    margin-bottom: 6px;
+
+    color: var(--plum);
+    font-size: 1.3rem;
+}
+
+.description {
+    margin-top: 0;
+    margin-bottom: 10px;
+
+    color: var(--plum);
+    opacity: 0.75;
+}
+
+
+/* =========================
+   MARKDOWN INPUT
+========================= */
 
 #markdown-input {
     width: 100%;
-    height: 100px;
+    height: 200px;
+
+    padding: 15px;
+
+    border: 2px solid var(--lavender);
+    border-radius: 14px;
+
+    background-color: var(--white);
+    color: var(--plum);
+
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+
+    resize: vertical;
+
+    box-shadow: 0 8px 20px rgba(61, 51, 82, 0.08);
 }
+
+#markdown-input::placeholder {
+    color: var(--plum);
+    opacity: 0.45;
+}
+
+#markdown-input:focus {
+    outline: none;
+
+    border-color: var(--coral);
+
+    box-shadow:
+        0 0 0 3px rgba(232, 146, 124, 0.2),
+        0 8px 20px rgba(61, 51, 82, 0.08);
+}
+
+
+/* =========================
+   OUTPUT + PREVIEW
+========================= */
 
 #html-output,
 #preview {
-    height: 100px;
-    display: inline-block;
     width: 100%;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: auto;
+    height: 200px;
+
+    padding: 15px;
+
+    border: 2px solid var(--lavender);
+    border-radius: 14px;
+
+    background-color: var(--white);
+    color: var(--plum);
+
     white-space: pre-wrap;
-    background-color: #f9f9f9;
+    overflow: auto;
+
+    box-shadow: 0 8px 20px rgba(61, 51, 82, 0.08);
 }
 
+
+/* Raw HTML styling */
+
+#html-output {
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+
+    background-color: var(--sand);
+}
+
+
+/* Preview styling */
+
+#preview {
+    background-color: var(--white);
+}
+
+#preview h1,
+#preview h2,
+#preview h3 {
+    color: var(--plum);
+}
+
+#preview a {
+    color: var(--coral);
+    font-weight: bold;
+}
+
+#preview a:hover {
+    color: var(--blue);
+}
+
+#preview blockquote {
+    margin: 10px 0;
+    padding: 10px 15px;
+
+    border-left: 5px solid var(--coral);
+
+    background-color: var(--sand-light);
+}
+
+#preview img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 30px;
+    padding: 25px;
+
+    text-align: center;
+
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
 @media (min-width: 600px) {
-    #markdown-input,
-    #html-output,
-    #preview {
-        height: 200px;
-        margin: 0;
-    }
 
     #container {
         display: flex;
         justify-content: space-evenly;
-        gap: 10px;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .container {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    #markdown-input,
+    #html-output,
+    #preview {
+        height: 300px;
+    }
+}
+
+
+@media (max-width: 599px) {
+
+    .hero {
+        min-height: 250px;
+        padding-top: 50px;
+    }
+
+    .sun {
+        width: 80px;
+        height: 80px;
+        right: 8%;
+    }
+
+    #container {
+        padding: 15px;
+    }
+
+    .container {
+        margin-bottom: 25px;
     }
 }
